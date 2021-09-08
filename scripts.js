@@ -47,7 +47,7 @@ function changeCameraPosition() {
     if (exponentSpeedInUse) {
         camera.position.z = (3.15 * Math.exp(- 3 * frames / speedSlow / cameraZPositionStart) - 0.15) * cameraZPositionFinish;
     } else {
-        camera.position.z = (cameraZPositionStart - 3 * frames / speedSlow);
+        camera.position.z = (cameraZPositionStart - 3 * frames / speedSlow / 1.5);
     }
 }
 
@@ -63,10 +63,12 @@ function animation() {
         start();
     }
 
-    moveCubes();
-    changeCameraPosition();
+    if (!isStopped) {
+        moveCubes();
+        changeCameraPosition();
 
-    frames++;
+        frames++;
+    }
     stats.update();
     requestAnimationFrame(animation);
 }

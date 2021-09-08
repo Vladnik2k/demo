@@ -47,13 +47,17 @@ scene.add(light);
 // keyboard
 
 let isInterfaceClosed = false;
+let isStopped = false;
 const closeAllKeyCode = 'Escape';
+const stopAllKeyCode = 'Space';
 let interfaceElements = [];
 
 window.addEventListener('keydown', ($event) => {
     if ($event.code === closeAllKeyCode) {
         isInterfaceClosed = !isInterfaceClosed;
         interfaceElements.forEach(hideOrShowElement);
+    } else if ($event.code === stopAllKeyCode) {
+        isStopped = !isStopped;
     }
 });
 
